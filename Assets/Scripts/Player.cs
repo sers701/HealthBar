@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public int Health => _health;
 
     [SerializeField] private int _health;
-    [SerializeField] private UnityEvent _onHealthChanged;
+    [HideInInspector] public UnityEvent OnHealthChanged;
 
     private int _maxHealth;
 
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
-        _onHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke();
     }
 
     public void Heal(int health)
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (_health + health <= _maxHealth)
         {
             _health += health;
-            _onHealthChanged?.Invoke();
+            OnHealthChanged?.Invoke();
         }
     }
 }
