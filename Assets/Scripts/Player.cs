@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    public int Health => _health;
+
     [SerializeField] private int _health;
-    [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private UnityEvent _onHealthChanged;
 
     private int _maxHealth;
 
     private void Awake()
     {
-        _healthBar.SetMaxHealth(_health);
         _maxHealth = _health;
     }
 
     public void TakeDamage(int damage)
     {
-            _health -= damage;
-            _healthBar.StartSetHealth(_health);
+        _health -= damage;
+        _onHealthChanged?.Invoke();
     }
 
     public void Heal(int health)
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour
         if (_health + health <= _maxHealth)
         {
             _health += health;
-            _healthBar.StartSetHealth(_health);
+            _onHealthChanged.Invoke();
         }
     }
 }

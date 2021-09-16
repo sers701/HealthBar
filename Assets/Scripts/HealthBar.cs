@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Slider))]
+
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private int _framesToChangeBar;
+    [SerializeField] private Player _player;
 
     private Slider _slider;
     private Coroutine _coroutine;
 
-    private void Awake()
+    private void Start()
     {
         _slider = GetComponent<Slider>();
+        SetMaxHealth(_player.Health);
     }
 
     public void SetMaxHealth(int health)
@@ -21,8 +25,9 @@ public class HealthBar : MonoBehaviour
         _slider.value = health;
     }
 
-    public void StartSetHealth(int currentHealth)
+    public void StartSetHealth()
     {
+        int currentHealth = _player.Health;
         if (_coroutine != null)
         {
              StopCoroutine(_coroutine);

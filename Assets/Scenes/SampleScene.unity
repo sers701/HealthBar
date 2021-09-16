@@ -539,7 +539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09441905, y: 0.09166666}
   m_AnchorMax: {x: 0.27286032, y: 0.13666667}
-  m_AnchoredPosition: {x: -1.4999695, y: -1.5}
+  m_AnchoredPosition: {x: -1.5, y: -1.5}
   m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503843146
@@ -1390,6 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _framesToChangeBar: 300
+  _player: {fileID: 2143107562}
 --- !u!114 &1852783605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06875581, y: 0.9126667}
   m_AnchorMax: {x: 0.42900002, y: 0.9616667}
-  m_AnchoredPosition: {x: -1.829956, y: -0.26229858}
+  m_AnchoredPosition: {x: -1.829956, y: -0.2623291}
   m_SizeDelta: {x: 1.2900009, y: -4.7798004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2143107561 stripped
@@ -1479,5 +1480,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23a72de52a60a0419a6f19ea98327ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onHealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1852783604}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: StartSetHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _health: 100
-  _healthBar: {fileID: 1852783604}
