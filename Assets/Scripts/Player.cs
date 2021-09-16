@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (_health + health <= _maxHealth)
         {
             _health += health;
-            _onHealthChanged.Invoke();
+            _onHealthChanged?.Invoke();
         }
     }
 }
