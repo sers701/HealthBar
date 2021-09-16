@@ -17,7 +17,16 @@ public class HealthBar : MonoBehaviour
     {
         _slider = GetComponent<Slider>();
         SetMaxHealth(_player.Health);
+    }
+
+    private void OnEnable()
+    {
         _player.OnHealthChanged.AddListener(StartSetHealth);
+    }
+
+    private void OnDisable()
+    {
+        _player.OnHealthChanged.RemoveListener(StartSetHealth);
     }
 
     private void SetMaxHealth(int health)
